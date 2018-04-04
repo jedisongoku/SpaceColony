@@ -338,8 +338,11 @@ public class GameController : MonoBehaviour {
 			PlayerPrefs.SetInt("PlayerBestScore", (int)playerScore);
 			uiPlayerBestScore.GetComponent<TextMesh> ().text = ((int)playerScore).ToString();
 		}
+        Social.ReportScore((long)playerScore, GPGSIds.leaderboard_global_leader_board, (bool success) => {
+            // handle success or failure
+        });
 
-		enableUI (true);
+        enableUI (true);
 
 		//show an Ad on screen every 1 out of 5 gameover
 		//if (Random.value > 0.80f) {
