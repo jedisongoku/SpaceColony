@@ -69,8 +69,7 @@ public class GameController : MonoBehaviour {
 	private GameObject spaceShip;
 	private Vector3 spaceShipStartPosition;
 	private GameObject AdManagerObject;
-
-    private Dictionary<string, string> playerScores;
+    
 
 	void Awake () {
 
@@ -93,10 +92,7 @@ public class GameController : MonoBehaviour {
 
 		playerCoin = PlayerPrefs.GetInt ("PlayerCoin");
 		rocketLevel = PlayerPrefs.GetInt ("RocketLevel");
-
-        playerScores = new Dictionary<string, string>();
-
-
+        
         print ("rocketLevel: " + rocketLevel);
 
 		//Create the rocket & set upgrade price
@@ -345,10 +341,8 @@ public class GameController : MonoBehaviour {
         Social.ReportScore((long)playerScore, GPGSIds.leaderboard_global_leader_board, (bool success) => {
             // handle success or failure
         });
-
-        playerScores.Add("playerScore", playerScore.ToString());
-        AppsFlyer.trackEvent("score1", playerScore.ToString());
-        AppsFlyer.trackRichEvent("score2", playerScores);
+        
+        AppsFlyer.trackEvent("score", playerScore.ToString());
 
         enableUI (true);
 
