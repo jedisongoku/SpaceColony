@@ -338,10 +338,13 @@ public class GameController : MonoBehaviour {
 			PlayerPrefs.SetInt("PlayerBestScore", (int)playerScore);
 			uiPlayerBestScore.GetComponent<TextMesh> ().text = ((int)playerScore).ToString();
 		}
+
+        //Send the score the global leader board
         Social.ReportScore((long)playerScore, GPGSIds.leaderboard_global_leader_board, (bool success) => {
             // handle success or failure
         });
         
+        //Tract an event with the player's score
         AppsFlyer.trackEvent("score", playerScore.ToString());
 
         enableUI (true);
