@@ -137,9 +137,19 @@ public class UserInputManager : MonoBehaviour {
 
 				case "Btn-Restart":
 				case "uiButton-Play":
-					UnPauseGame();
-					SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
-					break;
+                        int replayCounter = PlayerPrefs.GetInt("ReplayCount", 0);
+                        PlayerPrefs.SetInt("ReplayCount", ++replayCounter);
+                        Debug.Log(replayCounter);
+                        if(replayCounter == UnityAds.instance.replaysBeforeAd)
+                        {
+                            PlayerPrefs.SetInt("ReplayCount", 0);
+                            UnityAds.instance.ShowAd();
+                        }
+                            
+
+					    UnPauseGame();
+					    SceneManager.LoadScene (SceneManager.GetActiveScene ().name);
+					    break;
 						
 				case "uiButton-Upgrade":
 
