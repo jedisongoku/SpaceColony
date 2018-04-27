@@ -13,6 +13,7 @@ public class CounterController : MonoBehaviour {
 	public GameObject GC;								//Game controller
 	public GameObject tapToStartGo;						//text object
 	public GameObject uiButtonUpgrade;					//upgrade button
+    public GameObject uiButtonGlobalLeaderboard;        //global leader board button
 	public GameObject uiButtonNewSkin;					//new skin button
 	public GameObject uiButtonHireAstronaut;			//hire new astronaut button
 	public GameObject uiButtonSwitchStartingPlanet;		//swtich between available starting planets
@@ -39,6 +40,7 @@ public class CounterController : MonoBehaviour {
 		GetComponent<Renderer>().material.mainTexture = number[0];
 		transform.localScale = startingScale;
 		uiButtonUpgrade.SetActive (true);
+        uiButtonGlobalLeaderboard.SetActive(true);
 		uiButtonNewSkin.SetActive (true);
 		GetComponent<Renderer> ().enabled = false;
 		initCounter = false;
@@ -87,6 +89,7 @@ public class CounterController : MonoBehaviour {
 
 		//hide ui buttons
 		uiButtonUpgrade.SetActive (false);
+        uiButtonGlobalLeaderboard.SetActive(false);
 		uiButtonNewSkin.SetActive (false);
 		uiButtonHireAstronaut.SetActive (false);
 		uiButtonSwitchStartingPlanet.SetActive (false);

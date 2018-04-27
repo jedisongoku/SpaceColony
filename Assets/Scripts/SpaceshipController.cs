@@ -279,7 +279,21 @@ public class SpaceshipController : MonoBehaviour {
 				int currentManOnPlanet = PlayerPrefs.GetInt ("ManOnTheNewPlanet");
 				PlayerPrefs.SetInt ("ManOnTheNewPlanet", currentManOnPlanet + GameController.totalHiredAstronaut);
 				//let the astronauts out of the ship
-				StartCoroutine(unloadAstronauts ());
+
+                //Use player prefs to keep track of this one time AppsFlyer event
+                if(!PlayerPrefs.HasKey("FiveAstronautsOnPlanet"))
+                {
+                    PlayerPrefs.SetString("FiveAstronautsOnPlanet", "True");
+                    AppsFlyerMMP.FiveAstronauts();
+                }
+                //Use player prefs to keep track of this one time AppsFlyer event
+                if (!PlayerPrefs.HasKey("TenAstronautsOnPlanet"))
+                {
+                    PlayerPrefs.SetString("TenAstronautsOnPlanet", "True");
+                    AppsFlyerMMP.TenAstronauts();
+                }
+
+                StartCoroutine(unloadAstronauts ());
 			}
 		}
 	}

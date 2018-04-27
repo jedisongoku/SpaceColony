@@ -159,15 +159,16 @@ public class SpaceshipBodyController : MonoBehaviour {
 			bonusPower = 35;
 
 			//activate a nice particle fx for scoring a perfect disengage
-			if (SpaceshipController.activePartId < mainSpaceship.GetComponent<SpaceshipController> ().bodyParts.Length - 1) {
+			if (SpaceshipController.activePartId < mainSpaceship.GetComponent<SpaceshipController> ().bodyParts.Length-1) {
 				GameObject pp = Instantiate (perfectFx, transform.position, Quaternion.Euler (90, 90, 0)) as GameObject;
 				pp.name = "perfectFx";
 				pp.transform.parent = mainSpaceship.GetComponent<SpaceshipController> ().bodyParts [SpaceshipController.activePartId + 1].transform.Find ("MainBody").transform.Find ("Exhaust").transform;
 				pp.transform.localScale = new Vector3 (1, 0.5f, 1);
 				StartCoroutine(mainSpaceship.GetComponent<SpaceshipController> ().increasePitch ());
+                
 			}
-
-		}
+            AppsFlyerMMP.PerfectTap();
+        }
 
 		//tell spaceship controller to activate next fuel part
 		StartCoroutine(mainSpaceship.GetComponent<SpaceshipController>().activateNextPart(bonusPower));

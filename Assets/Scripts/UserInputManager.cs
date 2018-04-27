@@ -30,7 +30,6 @@ public class UserInputManager : MonoBehaviour {
 
 	enum Status { PLAY, PAUSE }
 	private Status currentStatus = Status.PLAY;
-    private GooglePlayManager googlePlayManager;
 
 	/// <summary>
 	/// Init.
@@ -39,7 +38,6 @@ public class UserInputManager : MonoBehaviour {
 
 		GC = GameObject.FindGameObjectWithTag ("GameController");
 		uiCam = GameObject.FindGameObjectWithTag ("UICamera").GetComponent<Camera>();
-        googlePlayManager = GameObject.FindGameObjectWithTag("GameController").GetComponent<GooglePlayManager>();
 		isPaused = false;
 		
 		Time.timeScale = 1.0f;
@@ -226,7 +224,7 @@ public class UserInputManager : MonoBehaviour {
 					break;
                     case "uiButton-GlobalLeaderBoard":
                         StartCoroutine(animateButton(hitInfo.transform.gameObject));
-                        googlePlayManager.ShowLeaderBoard();
+                        GoogleManager.ShowLeaderBoard();
                         break;
 
                 }

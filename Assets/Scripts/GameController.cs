@@ -340,12 +340,29 @@ public class GameController : MonoBehaviour {
 		}
 
         //Send the score the global leader board
-        Social.ReportScore((long)playerScore, GPGSIds.leaderboard_global_leader_board, (bool success) => {
-            // handle success or failure
-        });
-        
+#if UNITY_ANDROID
+        GoogleManager.ReportScore((int)playerScore);
+#elif UNITY_IOS
+#endif
+        //Social.ReportScore((long)playerScore, GPGSIds.leaderboard_global_leader_board, (bool success) => {
+        // handle success or failure
+
         //Tract an event with the player's score
-        AppsFlyer.trackEvent("score", playerScore.ToString());
+        switch((int)playerScore)
+        {
+            case 100:
+                AppsFlyerMMP.Score100();
+                break;
+            case 150:
+                AppsFlyerMMP.Score150();
+                break;
+            case 200:
+                AppsFlyerMMP.Score200();
+                break;
+            case 250:
+                AppsFlyerMMP.Score250();
+                break;
+        }
 
         enableUI (true);
 
