@@ -137,6 +137,7 @@ public class UserInputManager : MonoBehaviour {
 
 				case "Btn-Restart":
 				case "uiButton-Play":
+
                         int replayCounter = PlayerPrefs.GetInt("ReplayCount", 0);
                         PlayerPrefs.SetInt("ReplayCount", ++replayCounter);
                         Debug.Log(replayCounter);
