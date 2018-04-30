@@ -55,33 +55,13 @@ public class AppsFlyerMMP : MonoBehaviour {
         //AppsFlyer.createValidateInAppListener ("AppsFlyerTrackerCallbacks", "onInAppBillingSuccess", "onInAppBillingFailure");
 
     }
-    public static void Score100()
+
+    public static void Score(int playerScore)
     {
-        Debug.Log("AppsFlyerMMP: Score 100");
-        Dictionary<string, string> score100 = new Dictionary<string, string>();
-        score100.Add("score", "1");
-        AppsFlyer.trackRichEvent("score_100", score100);
-    }
-    public static void Score150()
-    {
-        Debug.Log("AppsFlyerMMP: Score 150");
-        Dictionary<string, string> score150 = new Dictionary<string, string>();
-        score150.Add("score", "1");
-        AppsFlyer.trackRichEvent("score_150", score150);
-    }
-    public static void Score200()
-    {
-        Debug.Log("AppsFlyerMMP: Score 200");
-        Dictionary<string, string> score200 = new Dictionary<string, string>();
-        score200.Add("score", "1");
-        AppsFlyer.trackRichEvent("score_200", score200);
-    }
-    public static void Score250()
-    {
-        Debug.Log("AppsFlyerMMP: Score 250");
-        Dictionary<string, string> score250 = new Dictionary<string, string>();
-        score250.Add("score", "1");
-        AppsFlyer.trackRichEvent("score_250", score250);
+        Debug.Log("AppsFlyerMMP: Score of " + playerScore);
+        Dictionary<string, string> score = new Dictionary<string, string>();
+        score.Add("score", playerScore.ToString());
+        AppsFlyer.trackRichEvent("score", score);
     }
 
     public static void PerfectTap()

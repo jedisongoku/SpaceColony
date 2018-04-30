@@ -348,21 +348,7 @@ public class GameController : MonoBehaviour {
         // handle success or failure
 
         //Tract an event with the player's score
-        switch((int)playerScore)
-        {
-            case 100:
-                AppsFlyerMMP.Score100();
-                break;
-            case 150:
-                AppsFlyerMMP.Score150();
-                break;
-            case 200:
-                AppsFlyerMMP.Score200();
-                break;
-            case 250:
-                AppsFlyerMMP.Score250();
-                break;
-        }
+        AppsFlyerMMP.Score((int)playerScore);
 
         enableUI (true);
 
