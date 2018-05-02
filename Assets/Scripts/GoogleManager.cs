@@ -8,7 +8,7 @@ using UnityEngine.UI;
 public class GoogleManager : MonoBehaviour
 {
 
-    string androidLeaderboard = "CgkIlsakv5cdEAIQAQ";
+    string androidLeaderboard = "CgkI98rl5-MBEAIQAQ";
     string iosLeaderboard = "Replace This";
     static string leaderboard;
 

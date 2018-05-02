@@ -6,7 +6,7 @@ public class SkinButtonController : MonoBehaviour {
 
 	//range starts from 0 to n
 	public int skinButtonID;
-
+    public GameObject lockObject;
 	private Color lockedColor;
 	private Color unlockedColor;
 
@@ -25,15 +25,16 @@ public class SkinButtonController : MonoBehaviour {
 
 
 	void Start() {
-
-		//check if this skin is open or not
-		if (PlayerPrefs.GetInt ("SkinOpen-" + skinButtonID.ToString()) == 1) {
+        //check if this skin is open or not
+        if (PlayerPrefs.GetInt ("SkinOpen-" + skinButtonID.ToString()) == 1) {
 			ren.material.color = unlockedColor;
 			bc.enabled = true;
-		} else {
-			ren.material.color = lockedColor;
+            lockObject.SetActive(false);
+        } else {
+            ren.material.color = lockedColor;
 			bc.enabled = false;
-		}
+            lockObject.SetActive(true);
+        }
 
 	}
 
@@ -42,7 +43,8 @@ public class SkinButtonController : MonoBehaviour {
 		if (skinButtonID == id) {
 			ren.material.color = unlockedColor;
 			bc.enabled = true;
-		}
+            lockObject.SetActive(false);
+        }
 	}
 
 }

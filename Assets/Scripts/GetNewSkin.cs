@@ -29,9 +29,8 @@ public class GetNewSkin : MonoBehaviour {
 	}
 
 	void Start () {
-
-		//set price
-		GetComponent<TextMesh>().text = "+ Get New (" + GC.GetComponent<GameController>().skinUnlockPrice + ")";
+        //set price
+        GetComponent<TextMesh>().text = "+ Get New (" + GC.GetComponent<GameController>().skinUnlockPrice + ")";
 
 	}
 

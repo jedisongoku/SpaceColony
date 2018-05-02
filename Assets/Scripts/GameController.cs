@@ -89,8 +89,10 @@ public class GameController : MonoBehaviour {
 
 		uiPlayerPrizeCoin.SetActive (false);
 		uiButtonPlay.SetActive (false);
-
-		playerCoin = PlayerPrefs.GetInt ("PlayerCoin");
+#if UNITY_EDITOR
+        PlayerPrefs.SetInt("PlayerCoin",10000);
+#endif
+        playerCoin = PlayerPrefs.GetInt ("PlayerCoin");
 		rocketLevel = PlayerPrefs.GetInt ("RocketLevel");
         
         print ("rocketLevel: " + rocketLevel);
@@ -135,7 +137,7 @@ public class GameController : MonoBehaviour {
 		spaceShip = GameObject.FindGameObjectWithTag ("Player");
 		spaceShipStartPosition = spaceShip.transform.position;
 
-		//Skin settings
+        //Skin settings
 		skinID = PlayerPrefs.GetInt ("SkinID");
 		//print ("Current skinID: " + skinID);
 		//Set spaceship skin
@@ -198,6 +200,8 @@ public class GameController : MonoBehaviour {
 		GameObject[] spBody = GameObject.FindGameObjectsWithTag ("SpaceshipBody");
 		GameObject[] spDivider = GameObject.FindGameObjectsWithTag ("SpaceshipDivider");
 
+        Debug.Log(skin.Length);
+        Debug.Log(id);
 		spHead.GetComponent<Renderer> ().material.mainTexture = skin [id].spaceshipHead;
 		uiCurrentSkinIcon.GetComponent<Renderer> ().material.mainTexture = skin [id].spaceshipHead;
 
